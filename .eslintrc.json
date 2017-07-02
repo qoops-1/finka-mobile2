@@ -1,0 +1,10 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "semi": "off",
+        "import/extensions": "off"
+    },
+    "globals": {
+        "fetch": false
+    }
+}
