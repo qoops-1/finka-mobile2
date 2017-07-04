@@ -2,7 +2,9 @@
     "extends": "airbnb",
     "rules": {
         "semi": "off",
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "global-require": "off",
+        "react/jsx-filename-extension": "off"
     },
     "globals": {
         "fetch": false
