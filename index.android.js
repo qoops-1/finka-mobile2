@@ -1,5 +1,2 @@
-import {
-  AppRegistry,
-} from 'react-native'
-
-AppRegistry.registerComponent('finkaApp', () => () => { })
+/* eslint-disable no-unused-vars */
+import App from './src/App'
