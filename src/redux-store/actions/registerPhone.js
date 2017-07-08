@@ -5,6 +5,10 @@ export default function (phone) {
     payload: {
       request: {
         url: '/registration',
+        method: 'post',
+        data: {
+          phone,
+        },
       },
     },
   }
