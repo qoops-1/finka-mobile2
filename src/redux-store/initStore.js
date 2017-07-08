@@ -7,6 +7,8 @@ const api = axios.create({
   responseType: 'json',
 })
 
+const initialState = {}
+
 export default function () {
-  return createStore(combineReducers(), applyMiddleware(axiosMiddleware(api)))
+  return createStore(combineReducers(), initialState, applyMiddleware(axiosMiddleware(api)))
 }

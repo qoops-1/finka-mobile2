@@ -4,7 +4,9 @@
         "semi": "off",
         "import/extensions": "off",
         "global-require": "off",
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "arrow-parens": "off",
+        "jsx-quotes": ["error", "prefer-single"]
     },
     "globals": {
         "fetch": false

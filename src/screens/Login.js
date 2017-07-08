@@ -6,15 +6,18 @@ import {
 } from 'react-native'
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import registerPhone from '../redux-store/actions/registerPhone'
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
+    this.state = { phone: '' }
     this.onPhoneSubmit = this.onPhoneSubmit.bind(this)
   }
 
   onPhoneSubmit() {
-    
+    this.props.sendPhone(this.state.phone)
   }
 
   render() {
@@ -22,11 +25,12 @@ class Login extends React.Component {
       <View>
         <Image source={require('../../resources/qiwi.png')} />
         <TextInput
-          placeholder="Номер телефона"
-          keyboardType="numeric"
+          placeholder='Номер телефона'
+          keyboardType='numeric'
+          value={this.state.phone}
         />
         <Button
-          title="Получить СМС"
+          title='Получить СМС'
           onPress={this.onPhoneSubmit}
         />
       </View>
@@ -34,8 +38,20 @@ class Login extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  sendLogin: 
+Login.propTypes = {
+  sendPhone: PropTypes.func.isRequired,
 }
 
-const LoginContainer = connect(null, mapDispatchToProps)()
+function mapDispatchToProps(dispatch) {
+  return {
+    sendPhone: phone => dispatch(registerPhone(phone)),
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    axios: state.axios,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)()
