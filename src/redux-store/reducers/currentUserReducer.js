@@ -1,10 +1,7 @@
 export default function (state = {}, action) {
   switch (action.type) {
     case 'REGISTER_PHONE_SUCCESS':
-      let pin
-      if (__DEV__) {
-        pin = action.payload.data.pin
-      }
+      const pin = __DEV__ ? action.payload.data.pin : ''
       return {
         token: action.payload.data.token,
         pin,
