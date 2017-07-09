@@ -9,6 +9,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import commonStyle from './commonStyles'
 import verifyPin from '../redux-store/actions/verifyPin'
+import App from '../App'
 
 class Pin extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Pin extends React.Component {
 
   onSubmit() {
     this.props.verifyPin(this.state.pin)
-      .then(() => console.warn('success'))
+      .then(() => App.mainScreen())
       .catch(response => this.setState({ error: response.error.message }))
   }
 

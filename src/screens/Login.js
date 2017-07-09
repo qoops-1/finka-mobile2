@@ -20,6 +20,7 @@ const style = StyleSheet.create({
 })
 
 class Login extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = { phone: '', error: '' }
