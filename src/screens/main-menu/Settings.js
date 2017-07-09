@@ -8,13 +8,13 @@ import {
 export default class Settings extends React.Component {
   constructor(props) {
     super(props)
-    this.logout = this.logout.bind(logout)
+    this.logout = this.logout.bind(this)
   }
 
   logout() {
 
   }
-  
+
   render() {
     return (
       <View>
