@@ -19,7 +19,7 @@ const axiosMiddlewareOptions = {
     request: [
       // Set authorization token
       function ({ getState, dispatch, getSourceAction }, req) {
-        if (getState().currentUser.token === undefined) {
+        if (getState().currentUser.token !== undefined) {
           req.headers.common['Authorization'] = 'Bearer ' + getState().currentUser.token
         }
         return req

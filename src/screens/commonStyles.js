@@ -13,4 +13,7 @@ export default StyleSheet.create({
     height: '10%',
     textAlign: 'center',
   },
+  errorMsg: {
+    color: 'red',
+  },
 })

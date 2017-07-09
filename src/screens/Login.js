@@ -17,9 +17,6 @@ const style = StyleSheet.create({
     width: '70%',
     resizeMode: 'contain',
   },
-  error: {
-    color: 'red',
-  }
 })
 
 class Login extends React.Component {
@@ -50,7 +47,7 @@ class Login extends React.Component {
           title='Получить СМС'
           onPress={this.onPhoneSubmit}
         />
-        <Text style={style.error}>{this.state.error}</Text>
+        <Text style={commonStyle.errorMsg}>{this.state.error}</Text>
       </View>
     )
   }
