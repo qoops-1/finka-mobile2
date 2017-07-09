@@ -28,6 +28,6 @@ const axiosMiddlewareOptions = {
   },
 }
 
-export default function () {
-  return createStore(rootReducer, applyMiddleware(axiosMiddleware(api, axiosMiddlewareOptions)))
+export default function (initialState) {
+  return createStore(rootReducer, initialState, applyMiddleware(axiosMiddleware(api, axiosMiddlewareOptions)))
 }

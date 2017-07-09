@@ -15,6 +15,10 @@ export default class Chats extends React.Component {
     ],
   };
 
+  componentDidMount() {
+    
+  }
+
   render() {
     return (
       <View>
