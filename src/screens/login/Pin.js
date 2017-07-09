@@ -9,6 +9,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import commonStyle from '../commonStyles'
 import verifyPin from '../../redux-store/actions/verifyPin'
+import getCurrentUser from '../../redux-store/actions/getCurrentUser'
 import App from '../../App'
 
 class Pin extends React.Component {
@@ -21,7 +22,7 @@ class Pin extends React.Component {
   }
 
   onSubmit() {
-    this.props.verifyPin(this.state.pin)
+    this.props.verifyLogin(this.state.pin)
       .then(() => App.mainScreen())
       .catch(response => this.setState({ error: response.error.message }))
   }
@@ -46,7 +47,7 @@ class Pin extends React.Component {
 
 Pin.propTypes = {
   currentUser: PropTypes.object.isRequired,
-  verifyPin: PropTypes.func.isRequired,
+  verifyLogin: PropTypes.func.isRequired,
 }
 
 function mapStateToProps(state) {
@@ -55,8 +56,10 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = {
-  verifyPin,
+function mapDispatchToProps(dispatch) {
+  return {
+    verifyLogin: (pin) => dispatch(verifyPin(pin)).then(() => dispatch(getCurrentUser())),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pin)

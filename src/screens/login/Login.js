@@ -36,7 +36,7 @@ class Login extends React.Component {
   render() {
     return (
       <View style={commonStyle.container}>
-        <Image source={require('../../resources/qiwi.png')} style={style.qiwiImage} />
+        <Image source={require('../../../resources/qiwi.png')} style={style.qiwiImage} />
         <TextInput
           style={commonStyle.input}
           placeholder='Номер телефона'

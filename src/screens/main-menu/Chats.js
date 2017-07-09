@@ -6,6 +6,15 @@ import {
 
 export default class Chats extends React.Component {
 
+  static navigatorButtons = {
+    rightButtons: [
+      {
+        id: 'add',
+        title: '+'
+      },
+    ],
+  };
+
   render() {
     return (
       <View>
