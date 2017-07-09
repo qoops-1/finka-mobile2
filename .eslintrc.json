@@ -6,7 +6,8 @@
         "global-require": "off",
         "react/jsx-filename-extension": "off",
         "arrow-parens": "off",
-        "jsx-quotes": ["error", "prefer-single"]
+        "jsx-quotes": ["error", "prefer-single"],
+        "prefer-template": "off"
     },
     "globals": {
         "fetch": false,

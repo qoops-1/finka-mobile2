@@ -13,8 +13,21 @@ const api = axios.create({
   responseType: 'json',
 })
 
-const axiosOptions = { returnRejectedPromiseOnError: true }
+const axiosMiddlewareOptions = {
+  returnRejectedPromiseOnError: true,
+  interceptors: {
+    request: [
+      // Set authorization token
+      function ({ getState, dispatch, getSourceAction }, req) {
+        if (getState().currentUser.token === undefined) {
+          req.headers.common['Authorization'] = 'Bearer ' + getState().currentUser.token
+        }
+        return req
+      },
+    ],
+  },
+}
 
 export default function () {
-  return createStore(rootReducer, applyMiddleware(axiosMiddleware(api, axiosOptions)))
+  return createStore(rootReducer, applyMiddleware(axiosMiddleware(api, axiosMiddlewareOptions)))
 }
