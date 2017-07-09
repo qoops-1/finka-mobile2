@@ -9,8 +9,8 @@ import {
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import registerPhone from '../redux-store/actions/registerPhone'
-import commonStyle from './commonStyles'
+import registerPhone from '../../redux-store/actions/registerPhone'
+import commonStyle from '../commonStyles'
 
 const style = StyleSheet.create({
   qiwiImage: {

@@ -7,9 +7,9 @@ import {
 import { connect } from 'react-redux'
 import React from 'react'
 import PropTypes from 'prop-types'
-import commonStyle from './commonStyles'
-import verifyPin from '../redux-store/actions/verifyPin'
-import App from '../App'
+import commonStyle from '../commonStyles'
+import verifyPin from '../../redux-store/actions/verifyPin'
+import App from '../../App'
 
 class Pin extends React.Component {
   constructor(props) {
