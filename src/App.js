@@ -15,7 +15,7 @@ export default class App extends React.Component {
     Navigation.startSingleScreenApp({
       screen: {
         screen: 'finka.Login',
-        title: 'Log',
+        title: 'Вход',
       },
       drawer: {
         left: {

@@ -1,14 +1,20 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import axiosMiddleware from 'redux-axios-middleware'
 import axios from 'axios'
+import userReducer from './reducers/currentUserReducer'
+
+const rootReducer = combineReducers({
+  currentUser: userReducer,
+})
 
 const api = axios.create({
-  baseURL: 'http://35.158.166.52:3000/api',
+  baseURL: 'http://localhost:3000/api',
+  timeout: 2000,
   responseType: 'json',
 })
 
-const initialState = {}
+const axiosOptions = { returnRejectedPromiseOnError: true }
 
 export default function () {
-  return createStore(combineReducers(), initialState, applyMiddleware(axiosMiddleware(api)))
+  return createStore(rootReducer, applyMiddleware(axiosMiddleware(api, axiosOptions)))
 }
