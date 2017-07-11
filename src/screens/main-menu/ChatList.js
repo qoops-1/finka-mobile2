@@ -36,8 +36,15 @@ class ChatList extends React.Component {
     this.renderRow = this.renderRow.bind(this)
   }
 
-  onPress(row_id) {
-
+  onPress(chosenChat) {
+    this.props.navigator.push({
+      screen: 'finka.Chat',
+      title: chosenChat.companions[0].name,
+      passProps: { chosenChat },
+      navigatorStyle: {
+        tabBarHidden: true,
+      }
+    })
   }
 
   renderRow (rowData) {
@@ -48,7 +55,7 @@ class ChatList extends React.Component {
           title={rowData.companions[0].name}
           subtitle={rowData.companions[0].phone}
           avatar={{uri:rowData.avatar_url}}
-          onPress={() => this.onPress(rowData.id)}
+          onPress={() => this.onPress(rowData)}
           component={TouchableOpacity}
         />
     )

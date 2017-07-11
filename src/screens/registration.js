@@ -5,6 +5,7 @@ import Drawer from './Drawer'
 import Pin from './login/Pin'
 import ChatList from './main-menu/ChatList'
 import Settings from './main-menu/Settings'
+import Chat from './main-menu/Chat'
 
 export default (store) => {
   Navigation.registerComponent('finka.Login', () => Login, store, Provider)
@@ -12,4 +13,5 @@ export default (store) => {
   Navigation.registerComponent('finka.Pin', () => Pin, store, Provider)
   Navigation.registerComponent('finka.ChatList', () => ChatList, store, Provider)
   Navigation.registerComponent('finka.Settings', () => Settings, store, Provider)
+  Navigation.registerComponent('finka.Chat', () => Chat, store, Provider)
 }
