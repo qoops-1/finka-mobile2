@@ -2,10 +2,17 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import axiosMiddleware from 'redux-axios-middleware'
 import axios from 'axios'
 import userReducer from './reducers/currentUserReducer'
+import chatsReducer from './reducers/chatsReducer'
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   currentUser: userReducer,
+  chats: chatsReducer,
 })
+
+const rootReducer = (state, action) => {
+  const resultState = action.type === 'CLEAR_STORE' ? undefined : state
+  return appReducer(resultState, action)
+}
 
 const api = axios.create({
   baseURL: 'http://localhost:3000/api',
