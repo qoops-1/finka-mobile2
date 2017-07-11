@@ -11,7 +11,7 @@ import storage from 'react-native-simple-store'
 import commonStyle from '../commonStyles'
 import verifyPin from '../../redux-store/actions/verifyPin'
 import getCurrentUser from '../../redux-store/actions/getCurrentUser'
-import App from '../../App'
+import gotoMainScreen from '../main-menu/init'
 
 class Pin extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Pin extends React.Component {
   onSubmit() {
     this.props.verifyLogin(this.state.pin)
       .then(() => {
-        App.mainScreen()
+        gotoMainScreen()
         storage.save('currentUser', this.props.currentUser)
       })
       .catch(response => this.setState({ error: response.error.message }))
