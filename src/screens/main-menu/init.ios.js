@@ -9,7 +9,8 @@ export default function () {
           label: 'Чаты',
           screen: 'finka.ChatList',
           title: 'Чаты',
-          icon: icons['chatbubbles'],
+          icon: icons['chatbubbles-outline'],
+          selectedIcon: icons['chatbubbles'],
           navigatorButtons: {
             rightButtons: [
               {
@@ -25,7 +26,6 @@ export default function () {
           title: 'Настройки',
           icon: icons['cog'],
         },
-        
       ],
       tabsStyle: {
         tabBarBackgroundColor: 'white',
