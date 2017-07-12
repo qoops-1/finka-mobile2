@@ -5,19 +5,24 @@ import {
   Button,
   Text,
 } from 'react-native'
+import { connect } from 'react-redux'
 import commonStyle from '../commonStyles'
+import verifyQiwi from '../../redux-store/actions/verifyQiwi'
 
-export default class QiwiWallet extends React.Component {
+class QiwiWallet extends React.Component {
   constructor(props) {
     super(props)
     this.onPress = this.onPress.bind(this)
     this.state = {
       pin: '',
+      error: '',
     }
   }
 
   onPress() {
-    
+    this.props.verifyQiwi(this.state.pin)
+      .then(() => this.props.navigator.pop(),
+        response => this.setState({ error: response.error.message }))
   }
 
   render() {
@@ -26,7 +31,7 @@ export default class QiwiWallet extends React.Component {
         <Text>Введите пин-код отправленный на ваш номер</Text>
         <TextInput
           style={commonStyle.input}
-          placeholder='asdfasdf'
+          placeholder='Пин-код'
           value={this.state.pin}
           onChangeText={text => this.setState({ pin: text })}
         />
@@ -34,7 +39,14 @@ export default class QiwiWallet extends React.Component {
           title='Подтвердить'
           onPress={this.onPress}
         />
+        <Text style={commonStyle.errorMsg}>{this.state.error}</Text>
       </View>
     )
   }
 }
+
+const mapDispatchToProps = {
+  verifyQiwi,
+}
+
+export default connect(null, mapDispatchToProps)(QiwiWallet)

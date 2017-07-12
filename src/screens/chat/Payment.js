@@ -67,7 +67,7 @@ class Payment extends React.Component {
                   response => this.setState({ error: response.error.message })
                 )
             },
-            response => this.setState({ error: response.error.message }))
+            response => this.setState({ error: 'qiwi' + response.error.message }))
     } else {
       this.props.newTransaction(this.props.chat, payment)
         .then(() => Navigation.dismissModal(), 

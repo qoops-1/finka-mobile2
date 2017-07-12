@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import storage from 'react-native-simple-store'
 import clearRedux from '../../redux-store/actions/clearStore'
+import sendQiwiSMS from '../../redux-store/actions/sendQiwiSMS'
 import gotoLogin from '../login/init'
 
 const settings = [
@@ -21,7 +22,22 @@ const settings = [
 class Settings extends React.Component {
   constructor(props) {
     super(props)
+    this.onPressQIWI = this.onPressQIWI.bind(this)
     this.logout = this.logout.bind(this)
+    this.gotoSetting = this.gotoSetting.bind(this)
+  }
+
+  gotoSetting(screen) {
+    this.props.navigator.push({
+      screen,
+    })
+  }
+
+  onPressQIWI() {
+    this.props.sendQiwiSMS()
+    this.props.navigator.push({
+      screen: 'finka.QiwiWallet',
+    })
   }
 
   logout() {
@@ -32,12 +48,6 @@ class Settings extends React.Component {
     gotoLogin()
   }
 
-  gotoSetting(screen) {
-    this.props.navigator.push({
-      screen,
-    })
-  }
-
   render() {
     return (
       <View>
@@ -45,7 +55,7 @@ class Settings extends React.Component {
           buttonStyle={{ marginTop: 10 }}
           backgroundColor='#f4a51d'
           title='Привязать кошелек QIWI'
-          onPress={() => this.gotoSetting('finka.QiwiWallet')}
+          onPress={this.onPressQIWI}
         />
         <List containerStyle={{marginBottom: 20}}>
           {
@@ -71,10 +81,13 @@ class Settings extends React.Component {
 
 Settings.propTypes = {
   clearRedux: PropTypes.func.isRequired,
+  sendQiwiSMS: PropTypes.func.isRequired,
+  navigator: PropTypes.object.isRequired,
 }
 
 const mapDispatchToProps = {
   clearRedux,
+  sendQiwiSMS,
 }
 
 export default connect(null, mapDispatchToProps)(Settings)

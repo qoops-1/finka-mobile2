@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import { Provider } from 'react-redux'
 import Login from './login/Login'
-import Drawer from './Drawer'
+import Drawer from './main-menu/Drawer'
 import Pin from './login/Pin'
 import ChatList from './main-menu/ChatList'
 import Settings from './main-menu/Settings'

@@ -15,6 +15,9 @@ export default function (state = [], action) {
         return chat
       })
     }
+    case 'QIWI_SMS': {
+      
+    }
     default:
       return state
   }
