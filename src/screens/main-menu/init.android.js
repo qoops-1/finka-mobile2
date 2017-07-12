@@ -2,9 +2,9 @@ import { Navigation } from 'react-native-navigation'
 import icons, { iconsLoaded } from '../../icons'
 
 export default function () {
-  iconsLoaded.then(() => {
-    Navigation.startTabBasedApp({
-      screen:{
+  iconsLoaded.then(() =>
+    Navigation.startSingleScreenApp({
+      screen: {
         label: 'Чаты',
         screen: 'finka.ChatList',
         title: 'Чаты',
@@ -19,6 +19,6 @@ export default function () {
           ],
         },
       },
-    })
-  })
+    }),
+  )
 }
