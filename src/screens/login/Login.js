@@ -23,7 +23,7 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { phone: '', error: '' }
+    this.state = { phone: '+7', error: '' }
     this.onPhoneSubmit = this.onPhoneSubmit.bind(this)
   }
 
@@ -38,6 +38,7 @@ class Login extends React.Component {
       <View style={commonStyle.container}>
         <Image source={require('../../../resources/qiwi.png')} style={style.qiwiImage} />
         <TextInput
+          autoFocus
           style={commonStyle.input}
           placeholder='Номер телефона'
           keyboardType='numeric'

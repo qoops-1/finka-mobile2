@@ -1,5 +1,8 @@
 {
     "extends": "airbnb",
+    "plugins": [
+        "react-native"
+    ],
     "rules": {
         "semi": "off",
         "import/extensions": "off",

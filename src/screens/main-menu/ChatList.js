@@ -12,15 +12,6 @@ import getAllChats from '../../redux-store/actions/getAllChats'
 
 class ChatList extends React.Component {
 
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        id: 'add',
-        title: '+'
-      },
-    ],
-  };
-
   constructor(props) {
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
@@ -32,8 +23,22 @@ class ChatList extends React.Component {
         dataSource: ds.cloneWithRows(this.props.chats)
       })
     })
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.onPress = this.onPress.bind(this)
     this.renderRow = this.renderRow.bind(this)
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type == 'NavBarButtonPress') {
+      if (event.id == 'add') {
+        this.props.navigator.push({
+          screen: 'finka.NewChat',
+          navigatorStyle: {
+            tabBarHidden: true,
+          },
+        })
+      }
+    }
   }
 
   onPress(chosenChat) {
@@ -47,7 +52,7 @@ class ChatList extends React.Component {
     })
   }
 
-  renderRow (rowData) {
+  renderRow(rowData) {
     return (
         <ListItem
           roundAvatar
@@ -63,8 +68,9 @@ class ChatList extends React.Component {
 
   render() {
     return (
-      <List containerStyle={{marginTop: 0}}>
+      <List containerStyle={{marginTop: 0, flex: 1}}>
         <ListView
+          enableEmptySections={true}
           renderRow={this.renderRow}
           dataSource={this.state.dataSource}
         />

@@ -36,6 +36,7 @@ class Pin extends React.Component {
       <View style={commonStyle.container}>
         <Text>Пин-код был отправлен на введенный номер</Text>
         <TextInput
+          autoFocus
           style={commonStyle.input}
           placeholder='Пин-код'
           keyboardType='numeric'

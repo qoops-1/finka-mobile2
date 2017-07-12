@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const names = ['add']
+const names = ['add', 'chatbubbles', 'cog']
 
 const icons = {}
 

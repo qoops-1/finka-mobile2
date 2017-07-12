@@ -27,7 +27,6 @@ class Settings extends React.Component {
   render() {
     return (
       <View>
-        <Text>Hi there from settings</Text>
         <Button
           title='Выйти'
           color='red'
