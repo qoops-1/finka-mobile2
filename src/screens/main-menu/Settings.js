@@ -4,7 +4,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native'
-import { List, ListItem } from 'react-native-elements'
+import { List, ListItem, Button as ColoredButton } from 'react-native-elements'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import storage from 'react-native-simple-store'
@@ -13,7 +13,7 @@ import gotoLogin from '../login/init'
 
 const settings = [
   {
-    name: 'Платеж через QIWI',
+    name: 'Профиль',
     screen: 'finka.AuthQIWI',
   },
 ]
@@ -32,9 +32,21 @@ class Settings extends React.Component {
     gotoLogin()
   }
 
+  gotoSetting(screen) {
+    this.props.navigator.push({
+      screen,
+    })
+  }
+
   render() {
     return (
       <View>
+        <ColoredButton
+          buttonStyle={{ marginTop: 10 }}
+          backgroundColor='#f4a51d'
+          title='Привязать кошелек QIWI'
+          onPress={() => this.gotoSetting('finka.QiwiWallet')}
+        />
         <List containerStyle={{marginBottom: 20}}>
           {
             settings.map((setting, i) => (

@@ -8,6 +8,7 @@ import Settings from './main-menu/Settings'
 import Chat from './chat/Chat'
 import Payment from './chat/Payment'
 import NewChat from './main-menu/NewChat'
+import QiwiWallet from './main-menu/QiwiWallet'
 
 export default (store) => {
   Navigation.registerComponent('finka.Login', () => Login, store, Provider)
@@ -18,4 +19,5 @@ export default (store) => {
   Navigation.registerComponent('finka.Chat', () => Chat, store, Provider)
   Navigation.registerComponent('finka.Payment', () => Payment, store, Provider)
   Navigation.registerComponent('finka.NewChat', () => NewChat, store, Provider)
+  Navigation.registerComponent('finka.QiwiWallet', () => QiwiWallet, store, Provider)
 }
