@@ -15,15 +15,6 @@ export default function (state = [], action) {
         return chat
       })
     }
-    case 'NEW_TRANSACTION_FAIL': {
-      return state
-    }
-    case 'CREATE_CHAT_FAIL': {
-      return state
-    }
-    case 'GET_ALL_CHATS_FAIL': {
-      return state
-    }
     default:
       return state
   }

@@ -1,4 +1,3 @@
-
 export default function (chat, payment) {
   return {
     type: 'NEW_TRANSACTION',
