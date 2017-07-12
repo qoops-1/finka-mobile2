@@ -29,8 +29,8 @@ class Login extends React.Component {
 
   onPhoneSubmit() {
     this.props.registerPhone(this.state.phone)
-      .then(() => this.props.navigator.push({ screen: 'finka.Pin' }))
-      .catch(response => this.setState({ error: response.error.message }))
+      .then(response => console.warn(JSON.stringify(response)),
+      response => console.warn(JSON.stringify(response)))
   }
 
   render() {
