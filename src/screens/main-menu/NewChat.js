@@ -29,7 +29,6 @@ class NewChat extends React.Component {
           value={this.state.phone}
         />
         <Button
-          autoFocus
           title='Создать'
           onPress={this.onPress}
         />

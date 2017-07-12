@@ -45,7 +45,7 @@ class ChatList extends React.Component {
     this.props.navigator.push({
       screen: 'finka.Chat',
       title: chosenChat.companions[0].name,
-      passProps: { chosenChat },
+      passProps: { chosenChatID: chosenChat.id },
       navigatorStyle: {
         tabBarHidden: true,
       }

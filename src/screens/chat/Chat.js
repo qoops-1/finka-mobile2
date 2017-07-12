@@ -75,14 +75,14 @@ class Chat extends React.Component {
   onPressActionButton() {
     Navigation.showModal({
       screen: 'finka.Payment',
-      passProps: { chat: this.props.chosenChat },
+      passProps: { chat: this.props.chat },
     })
   }
 
   render() {
     return (
       <GiftedChat
-        messages={Chat.getConvertedMessages(this.props.chosenChat)}
+        messages={Chat.getConvertedMessages(this.props.chat)}
         locale='ru'
         user={{ _id: 2 }}
         renderBubble={Chat.renderBubble}
@@ -94,9 +94,10 @@ class Chat extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.currentUser,
+    chat: state.chats.find(({ id }) => id === ownProps.chosenChatID),
   }
 }
 

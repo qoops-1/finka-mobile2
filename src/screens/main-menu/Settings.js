@@ -1,14 +1,22 @@
 import React from 'react'
 import {
   View,
-  Text,
   Button,
+  TouchableOpacity,
 } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import storage from 'react-native-simple-store'
 import clearRedux from '../../redux-store/actions/clearStore'
 import gotoLogin from '../login/init'
+
+const settings = [
+  {
+    name: 'Платеж через QIWI',
+    screen: 'finka.AuthQIWI',
+  },
+]
 
 class Settings extends React.Component {
   constructor(props) {
@@ -27,6 +35,18 @@ class Settings extends React.Component {
   render() {
     return (
       <View>
+        <List containerStyle={{marginBottom: 20}}>
+          {
+            settings.map((setting, i) => (
+              <ListItem
+                key={i}
+                title={setting.name}
+                onPress={() => this.gotoSetting(setting.screen)}
+                component={TouchableOpacity}
+              />
+            ))
+          }
+        </List>
         <Button
           title='Выйти'
           color='red'

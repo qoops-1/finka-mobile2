@@ -6,6 +6,18 @@ export default function (state = [], action) {
     case 'CREATE_CHAT_SUCCESS': {
       return [...state, action.data]
     }
+    case 'NEW_TRANSACTION_SUCCESS': {
+      const newTransaction = action.payload.data.transaction
+      return state.map(chat => {
+        if (chat.id === newTransaction.conversation_id) {
+          return Object.assign({}, chat, { transactions: [newTransaction, ...chat.transactions] })
+        }
+        return chat
+      })
+    }
+    case 'NEW_TRANSACTION_FAIL': {
+      return state
+    }
     case 'CREATE_CHAT_FAIL': {
       return state
     }
