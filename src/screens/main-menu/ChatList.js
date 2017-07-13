@@ -38,8 +38,10 @@ class ChatList extends React.Component {
   }
 
   componentDidMount() {
-    this.chatsSub = this.context.cable.subscriptions.create('ChatChannel', { received: this.props.onReceivedChat })
-    this.messagesSub = this.context.cable.subscriptions.create('MessageChannel', { received: this.props.newTransactionReceived })
+    this.chatsSub = this.context.cable.subscriptions.create('ChatChannel',
+      { received: this.props.onReceivedChat })
+    this.messagesSub = this.context.cable.subscriptions.create('MessageChannel',
+      { received: this.props.newTransactionReceived })
   }
 
   componentWillUnmount() {
