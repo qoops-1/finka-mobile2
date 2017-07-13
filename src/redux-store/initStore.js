@@ -15,7 +15,7 @@ const rootReducer = (state, action) => {
 }
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'http://104.197.162.71:3000/api',
   timeout: 2000,
   responseType: 'json',
 })
