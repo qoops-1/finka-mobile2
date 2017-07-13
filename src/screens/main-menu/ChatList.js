@@ -14,6 +14,8 @@ import getAllChats from '../../redux-store/actions/getAllChats'
 import newChat from '../../redux-store/actions/newChat'
 import newTransactionReceived from '../../redux-store/actions/newTransactionReceived'
 
+const config = require('../../../appConfig.json')
+
 class ChatList extends React.Component {
   static contextTypes = {
     cable: PropTypes.object.isRequired
@@ -116,8 +118,9 @@ const mapDispatchToProps = {
 }
 
 function chatListWithCable(props) {
+  const url = `ws://${config.endpoint}:3000/cable`
   return (
-    <ActionCableProvider url='ws://localhost:3000/cable'>
+    <ActionCableProvider url={url}>
       <ChatList {...props} />
     </ActionCableProvider>
   )

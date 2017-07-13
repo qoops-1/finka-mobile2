@@ -4,6 +4,8 @@ import axios from 'axios'
 import userReducer from './reducers/currentUserReducer'
 import chatsReducer from './reducers/chatsReducer'
 
+const config = require('../../appConfig.json')
+
 const appReducer = combineReducers({
   currentUser: userReducer,
   chats: chatsReducer,
@@ -15,8 +17,8 @@ const rootReducer = (state, action) => {
 }
 
 const api = axios.create({
-  baseURL: 'http://104.197.162.71:3000/api',
-  timeout: 2000,
+  baseURL: `http://${config.endpoint}:3000/api`,
+  timeout: config.connTimeout,
   responseType: 'json',
 })
 
