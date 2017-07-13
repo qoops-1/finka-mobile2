@@ -58,7 +58,6 @@ class Payment extends React.Component {
       comment: this.state.comment,
       receiver_id: this.props.chat.companions[0].id
     }
-    console.warn(JSON.stringify(payment))
     if (this.state.money === 'qiwi') {
       this.props.payWithQiwi(this.props.chat.companions[0].phone, this.state.amount)
             .then(() => {

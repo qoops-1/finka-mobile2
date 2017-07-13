@@ -8,24 +8,42 @@ import {
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { List, ListItem } from 'react-native-elements'
+import ActionCableProvider from 'react-actioncable-provider'
+import ActionCable from 'react-native-actioncable'
 import getAllChats from '../../redux-store/actions/getAllChats'
+import newChat from '../../redux-store/actions/newChat'
+import newTransactionReceived from '../../redux-store/actions/newTransactionReceived'
 
 class ChatList extends React.Component {
+  static contextTypes = {
+    cable: PropTypes.object.isRequired
+  }
 
   constructor(props) {
     super(props)
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
     this.state = {
-      dataSource: ds.cloneWithRows([])
+      dataSource: ds.cloneWithRows([]),
     }
     this.props.getAllChats().then(() => {
       this.setState({
-        dataSource: ds.cloneWithRows(this.props.chats)
+        dataSource: ds.cloneWithRows(this.props.chats),
       })
     })
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.onPress = this.onPress.bind(this)
     this.renderRow = this.renderRow.bind(this)
+  }
+
+  componentDidMount() {
+    this.chatsSub = this.context.cable.subscriptions.create('ChatChannel', { received: this.props.onReceivedChat })
+    this.messagesSub = this.context.cable.subscriptions.create('MessageChannel', { received: this.props.newTransactionReceived })
+  }
+
+  componentWillUnmount() {
+    console.warn("unmount chatlist")
+    this.context.cable.subscriptions.remove(this.chatsSub)
+    this.context.cable.subscriptions.remove(this.messagesSub)
   }
 
   onNavigatorEvent(event) {
@@ -48,29 +66,29 @@ class ChatList extends React.Component {
       passProps: { chosenChatID: chosenChat.id },
       navigatorStyle: {
         tabBarHidden: true,
-      }
+      },
     })
   }
 
   renderRow(rowData) {
     return (
-        <ListItem
-          roundAvatar
-          key={rowData.id}
-          title={rowData.companions[0].name}
-          subtitle={rowData.companions[0].phone}
-          avatar={{uri:rowData.avatar_url}}
-          onPress={() => this.onPress(rowData)}
-          component={TouchableOpacity}
-        />
+      <ListItem
+        roundAvatar
+        key={rowData.id}
+        title={rowData.companions[0].name}
+        subtitle={rowData.companions[0].phone}
+        avatar={{ uri: rowData.avatar_url }}
+        onPress={() => this.onPress(rowData)}
+        component={TouchableOpacity}
+      />
     )
   }
 
   render() {
     return (
-      <List containerStyle={{marginTop: 0, flex: 1}}>
+      <List containerStyle={{ marginTop: 0, flex: 1 }}>
         <ListView
-          enableEmptySections={true}
+          enableEmptySections
           renderRow={this.renderRow}
           dataSource={this.state.dataSource}
         />
@@ -82,6 +100,7 @@ class ChatList extends React.Component {
 ChatList.propTypes = {
   getAllChats: PropTypes.func.isRequired,
   navigator: PropTypes.object.isRequired,
+  onReceivedChat: PropTypes.func.isRequired,
 }
 
 function mapStateToProps(state) {
@@ -91,7 +110,17 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
+  onReceivedChat: newChat,
   getAllChats,
+  newTransactionReceived
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatList)
+function chatListWithCable(props) {
+  return (
+    <ActionCableProvider url='ws://localhost:3000/cable'>
+      <ChatList {...props} />
+    </ActionCableProvider>
+  )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(chatListWithCable)
