@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 
 export default function () {
   return (
     <View>
-      <Text>In da drawer</Text>
+      <FlatList>
+        <TouchableOpacity>
+          <View>
+            <Text>hello</Text>
+          </View>
+        </TouchableOpacity>
+      </FlatList>
     </View>
   )
 }
