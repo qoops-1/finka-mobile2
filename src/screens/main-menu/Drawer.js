@@ -4,14 +4,26 @@ import icons from '../../icons'
 import commonStyle from '../commonStyles'
 
 
-export default function () {
-  return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
-      <TouchableOpacity activeOpacity={0.8} style={commonStyle.touchableOpacity} >
-        <View style={commonStyle.container}>
-          <Text style={commonStyle.textDrawer} >Hello</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  )
+export default class Drawer extends React.Component {
+
+  renderItem() {
+    return (
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <TouchableOpacity activeOpacity={0.8} style={commonStyle.touchableOpacity} >
+          <View style={commonStyle.container}>
+            <Text style={commonStyle.textDrawer} >Hello</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  render() {
+    return (
+      <FlatList
+        data={['Hi', 'bobby']}
+        renderItem={this.renderItem}
+      />
+    )
+  }
 }
