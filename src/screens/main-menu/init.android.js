@@ -7,6 +7,11 @@ export default function () {
       title: 'Чаты',
       navigatorStyle: {},
       navigatorButtons: {},
+      leftButtons: [
+        {
+          id: 'sideMenu',
+        },
+      ],
     },
     drawer: {
       left: {

@@ -15,8 +15,17 @@ export default function (state = [], action) {
         return chat
       })
     }
-    case 'QIWI_SMS': {
-      
+    case 'NEW_TRANSACTION_RECEIVED': {
+      const newTransaction = action.transaction
+      return state.map(chat => {
+        if (chat.id === newTransaction.conversation_id) {
+          return Object.assign({}, chat, { transactions: [newTransaction, ...chat.transactions] })
+        }
+        return chat
+      })
+    }
+    case 'NEW_CHAT': {
+      return [...state, action.chat]
     }
     default:
       return state

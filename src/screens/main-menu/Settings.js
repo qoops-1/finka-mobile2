@@ -63,7 +63,7 @@ class Settings extends React.Component {
               <ListItem
                 key={i}
                 title={setting.name}
-                onPress={() => this.gotoSetting(setting.screen)}
+                onPress={() => this.gotoSetting('finka.QiwiWallet')}
                 component={TouchableOpacity}
               />
             ))
