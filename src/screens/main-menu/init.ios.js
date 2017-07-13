@@ -30,7 +30,6 @@ export default function () {
       tabsStyle: {
         tabBarBackgroundColor: 'white',
       },
-
     })
   )
 }
