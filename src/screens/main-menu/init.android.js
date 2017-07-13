@@ -5,19 +5,10 @@ export default function () {
   iconsLoaded.then(() =>
     Navigation.startSingleScreenApp({
       screen: {
-        label: 'Чаты',
         screen: 'finka.ChatList',
         title: 'Чаты',
-        icon: icons['chatbubbles-outline'],
-        selectedIcon: icons['chatbubbles'],
-        navigatorButtons: {
-          rightButtons: [
-            {
-              id: 'add',
-              icon: icons['add'],
-            },
-          ],
-        },
+        navigatorStyle: {},
+        navigatorButtons: {},
       },
     }),
   )
