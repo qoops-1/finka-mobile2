@@ -6,11 +6,14 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   input: {
+    alignSelf: 'stretch',
+    marginRight: '5%',
+    marginLeft: '5%',
     height: '10%',
     textAlign: 'center',
-    width: '40%',
   },
   errorMsg: {
     color: 'red',
