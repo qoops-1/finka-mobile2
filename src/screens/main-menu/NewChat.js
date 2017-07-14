@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   View,
+  Text,
   TextInput,
   Button,
 } from 'react-native'
@@ -37,13 +38,15 @@ class NewChat extends React.Component {
   render() {
     return (
       <View style={commonStyle.container}>
+        <Text>Добавьте собеседника</Text>
         <TextInput
+          placeholder='Номер телефона'
           style={commonStyle.input}
           onChangeText={text => this.setState({ phone: text })}
           value={this.state.phone}
         />
         <Button
-          title='Создать'
+          title='Добавить'
           onPress={this.onPress}
         />
       </View>
