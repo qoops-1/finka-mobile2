@@ -11,6 +11,7 @@ import storage from 'react-native-simple-store'
 import clearRedux from '../../redux-store/actions/clearStore'
 import sendQiwiSMS from '../../redux-store/actions/sendQiwiSMS'
 import gotoLogin from '../login/init'
+import screens from './screens'
 
 const settings = [
   {

@@ -13,6 +13,7 @@ import ActionCable from 'react-native-actioncable'
 import getAllChats from '../../redux-store/actions/getAllChats'
 import newChat from '../../redux-store/actions/newChat'
 import newTransactionReceived from '../../redux-store/actions/newTransactionReceived'
+import screens from './screens'
 
 const config = require('../../../appConfig.json')
 
