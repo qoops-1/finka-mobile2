@@ -38,13 +38,9 @@ class Settings extends React.Component {
   onNavigatorEvent(event) {
     if (event.type === 'DeepLink') {
       if (event.link === 'chats') {
-        this.props.navigator.resetTo({
-          screen: 'finka.ChatList',
-        })
+        this.props.navigator.resetTo(screens.chats)
       } else if (event.link === 'addchat') {
-        this.props.navigator.resetTo({
-          screen: 'finka.NewChat',
-        })
+        this.props.navigator.resetTo(screens.addchat)
       }
     }
   }

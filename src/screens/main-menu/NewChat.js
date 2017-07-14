@@ -7,31 +7,29 @@ import {
 } from 'react-native'
 import createChat from '../../redux-store/actions/createChat'
 import commonStyle from '../commonStyles'
+import screens from './screens'
 
 class NewChat extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { phone: '+7' }
+    this.state = { phone: '' }
     this.onPress = this.onPress.bind(this)
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
     this.onNavigatorEvent = this.onNavigatorEvent.bind(this)
   }
 
   onPress() {
-    createChat([this.state.phone])
-    this.props.navigator.pop()
+    this.props.createChat([this.state.phone])
+      .then(() => this.props.navigator.pop(),
+      response => console.warn(response.error.message))
   }
 
   onNavigatorEvent(event) {
     if (event.type === 'DeepLink') {
       if (event.link === 'chats') {
-        this.props.navigator.resetTo({
-          screen: 'finka.ChatList',
-        })
+        this.props.navigator.resetTo(screens.chats)
       } else if (event.link === 'settings') {
-        this.props.navigator.resetTo({
-          screen: 'finka.Settings',
-        })
+        this.props.navigator.resetTo(screens.settings)
       }
     }
   }

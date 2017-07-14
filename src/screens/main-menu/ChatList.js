@@ -61,14 +61,9 @@ class ChatList extends React.Component {
       }
     } else if (event.type === 'DeepLink') {
       if (event.link === 'settings') {
-        this.props.navigator.resetTo({
-          screen: 'finka.Settings',
-          title: 'Настройки'
-        })
+        this.props.navigator.resetTo(screens.settings)
       } else if (event.link === 'addchat') {
-        this.props.navigator.resetTo({
-          screen: 'finka.NewChat',
-        })
+        this.props.navigator.resetTo(screens.addchat)
       }
     }
   }
