@@ -5,6 +5,7 @@ import {
   TextInput,
   Button,
   StyleSheet,
+  KeyboardAvoidingView,
 } from 'react-native'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -23,7 +24,7 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { phone: '+7', error: '' }
+    this.state = { phone: '', error: '' }
     this.onPhoneSubmit = this.onPhoneSubmit.bind(this)
   }
 
@@ -35,10 +36,13 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={commonStyle.container}>
+      <KeyboardAvoidingView 
+        style={commonStyle.container}
+        behavior='padding'
+        keyboardVerticalOffset={20}
+      >
         <Image source={require('../../../resources/qiwi.png')} style={style.qiwiImage} />
         <TextInput
-          autoFocus
           style={commonStyle.input}
           placeholder='Номер телефона'
           keyboardType='numeric'
@@ -50,7 +54,7 @@ class Login extends React.Component {
           onPress={this.onPhoneSubmit}
         />
         <Text style={commonStyle.errorMsg}>{this.state.error}</Text>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

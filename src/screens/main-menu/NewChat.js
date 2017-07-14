@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  View,
+  KeyboardAvoidingView,
   Text,
   TextInput,
   Button,
@@ -37,7 +37,11 @@ class NewChat extends React.Component {
 
   render() {
     return (
-      <View style={commonStyle.container}>
+      <KeyboardAvoidingView
+        style={commonStyle.container}
+        behavior='padding'
+        keyboardVerticalOffset={20}
+      >
         <Text>Добавьте собеседника</Text>
         <TextInput
           placeholder='Номер телефона'
@@ -46,10 +50,11 @@ class NewChat extends React.Component {
           value={this.state.phone}
         />
         <Button
+          style={{padding: 10}}
           title='Добавить'
           onPress={this.onPress}
         />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

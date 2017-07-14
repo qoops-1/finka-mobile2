@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  View,
+  KeyboardAvoidingView,
   TextInput,
   Button,
   Text,
@@ -27,7 +27,11 @@ class QiwiWallet extends React.Component {
 
   render() {
     return (
-      <View style={commonStyle.container}>
+      <KeyboardAvoidingView
+        style={commonStyle.container}
+        behavior='padding'
+        keyboardVerticalOffset={20}
+      >
         <Text>Введите пин-код отправленный на ваш номер</Text>
         <TextInput
           style={commonStyle.input}
@@ -40,7 +44,7 @@ class QiwiWallet extends React.Component {
           onPress={this.onPress}
         />
         <Text style={commonStyle.errorMsg}>{this.state.error}</Text>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

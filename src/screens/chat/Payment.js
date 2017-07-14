@@ -76,7 +76,7 @@ class Payment extends React.Component {
 
   render() {
     return (
-      <View style={commonStyle.container}>
+      <View style={[commonStyle.container, {paddingBottom: 20}]}>
         <TextInput 
           placeholder='Сумма' 
           style={commonStyle.input} 

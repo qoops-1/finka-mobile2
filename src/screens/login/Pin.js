@@ -3,6 +3,7 @@ import {
   TextInput,
   Button,
   Text,
+  KeyboardAvoidingView,
 } from 'react-native'
 import { connect } from 'react-redux'
 import React from 'react'
@@ -33,10 +34,13 @@ class Pin extends React.Component {
 
   render() {
     return (
-      <View style={commonStyle.container}>
+      <KeyboardAvoidingView
+        style={commonStyle.container}
+        behavior='padding'
+        keyboardVerticalOffset={20}
+      >
         <Text>Пин-код был отправлен на введенный номер</Text>
         <TextInput
-          autoFocus
           style={commonStyle.input}
           placeholder='Пин-код'
           keyboardType='numeric'
@@ -45,7 +49,7 @@ class Pin extends React.Component {
         />
         <Button title='Проверить' onPress={this.onSubmit} />
         <Text style={commonStyle.errorMsg}>{this.state.error}</Text>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
