@@ -33,21 +33,28 @@ class ChatList extends React.Component {
         dataSource: ds.cloneWithRows(this.props.chats),
       })
     })
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this.onPress = this.onPress.bind(this)
     this.renderRow = this.renderRow.bind(this)
   }
 
   componentDidMount() {
-    this.chatsSub = this.context.cable.subscriptions.create('ChatChannel',
-      { received: this.props.onReceivedChat })
-    this.messagesSub = this.context.cable.subscriptions.create('MessageChannel',
-      { received: this.props.newTransactionReceived })
+    // this.chatsSub = this.context.cable.subscriptions.create('ChatChannel',
+    //   { received: this.props.onReceivedChat })
+    // this.messagesSub = this.context.cable.subscriptions.create('MessageChannel',
+    //   { received: this.props.newTransactionReceived })
   }
 
   componentWillUnmount() {
-    this.context.cable.subscriptions.remove(this.chatsSub)
-    this.context.cable.subscriptions.remove(this.messagesSub)
+    // this.context.cable.subscriptions.remove(this.chatsSub)
+    // this.context.cable.subscriptions.remove(this.messagesSub)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(nextProps.chats)
+    })
   }
 
   onNavigatorEvent(event) {

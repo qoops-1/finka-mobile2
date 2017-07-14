@@ -4,7 +4,7 @@ export default function (state = [], action) {
       return action.payload.data.conversations
     }
     case 'CREATE_CHAT_SUCCESS': {
-      return [...state, action.data]
+      return [...state, action.payload.data]
     }
     case 'NEW_TRANSACTION_SUCCESS': {
       const newTransaction = action.payload.data.transaction

@@ -21,8 +21,7 @@ class NewChat extends React.Component {
 
   onPress() {
     this.props.createChat([this.state.phone])
-      .then(() => this.props.navigator.pop(),
-      response => console.warn(response.error.message))
+      .then(() => this.props.navigator.pop())
   }
 
   onNavigatorEvent(event) {
