@@ -7,6 +7,16 @@ export default function () {
       title: 'Чаты',
       navigatorStyle: {},
       navigatorButtons: {},
+      topTabs: [
+        {
+          screenId: 'finka.ChatList',
+          title: 'Чаты',
+        },
+        {
+          screenId: 'finka.Settings',
+          title: 'Настройки',
+        },
+      ],
       leftButtons: [
         {
           id: 'sideMenu',
