@@ -13,11 +13,27 @@ class NewChat extends React.Component {
     super(props)
     this.state = { phone: '+7' }
     this.onPress = this.onPress.bind(this)
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+    this.onNavigatorEvent = this.onNavigatorEvent.bind(this)
   }
 
   onPress() {
     createChat([this.state.phone])
     this.props.navigator.pop()
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'DeepLink') {
+      if (event.link === 'chats') {
+        this.props.navigator.resetTo({
+          screen: 'finka.ChatList',
+        })
+      } else if (event.link === 'settings') {
+        this.props.navigator.resetTo({
+          screen: 'finka.Settings',
+        })
+      }
+    }
   }
 
   render() {

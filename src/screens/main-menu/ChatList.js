@@ -45,19 +45,29 @@ class ChatList extends React.Component {
   }
 
   componentWillUnmount() {
-    console.warn("unmount chatlist")
     this.context.cable.subscriptions.remove(this.chatsSub)
     this.context.cable.subscriptions.remove(this.messagesSub)
   }
 
   onNavigatorEvent(event) {
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'add') {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'add') {
         this.props.navigator.push({
           screen: 'finka.NewChat',
           navigatorStyle: {
             tabBarHidden: true,
           },
+        })
+      }
+    } else if (event.type === 'DeepLink') {
+      if (event.link === 'settings') {
+        this.props.navigator.resetTo({
+          screen: 'finka.Settings',
+          title: 'Настройки'
+        })
+      } else if (event.link === 'addchat') {
+        this.props.navigator.resetTo({
+          screen: 'finka.NewChat',
         })
       }
     }

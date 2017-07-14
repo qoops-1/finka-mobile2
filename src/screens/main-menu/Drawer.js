@@ -32,19 +32,24 @@ const style = StyleSheet.create({
   },
   menu: {
     marginLeft: '5%',
-  }
+  },
 })
 
 const menu = [
   {
     key: 1,
-    name: 'Настройки',
-    screen: 'finka.Settings',
+    name: 'Чаты',
+    link: 'chats',
   },
   {
     key: 2,
-    name: 'Чаты',
-    screen: 'finka.ChatList',
+    name: 'Добавить собеседника',
+    link: 'addchat',
+  },
+  {
+    key: 3,
+    name: 'Настройки',
+    link: 'settings',
   },
 ]
 
@@ -64,16 +69,16 @@ export default class Drawer extends React.Component {
     });
   }
 
-  gotoScreen(screen) {
+  gotoScreen(link) {
     this.toggleDrawer()
-    this.props.navigator.popToRoot({
-      screen,
+    this.props.navigator.handleDeepLink({
+      link,
     })
   }
 
   renderItem({ item }) {
     return (
-      <TouchableOpacity onPress={() => this.gotoScreen(item.screen)}>
+      <TouchableOpacity onPress={() => this.gotoScreen(item.link)}>
         <View style={style.menuLine}>
           <Text style={style.menuLineText}>{item.name}</Text>
         </View>

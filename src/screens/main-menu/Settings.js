@@ -25,12 +25,28 @@ class Settings extends React.Component {
     this.onPressQIWI = this.onPressQIWI.bind(this)
     this.logout = this.logout.bind(this)
     this.gotoSetting = this.gotoSetting.bind(this)
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
+    this.onNavigatorEvent = this.onNavigatorEvent.bind(this)
   }
 
   gotoSetting(screen) {
     this.props.navigator.push({
       screen,
     })
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'DeepLink') {
+      if (event.link === 'chats') {
+        this.props.navigator.resetTo({
+          screen: 'finka.ChatList',
+        })
+      } else if (event.link === 'addchat') {
+        this.props.navigator.resetTo({
+          screen: 'finka.NewChat',
+        })
+      }
+    }
   }
 
   onPressQIWI() {
@@ -57,7 +73,7 @@ class Settings extends React.Component {
           title='Привязать кошелек QIWI'
           onPress={this.onPressQIWI}
         />
-        <List containerStyle={{marginBottom: 20}}>
+        <List containerStyle={{ marginBottom: 20 }}>
           {
             settings.map((setting, i) => (
               <ListItem
