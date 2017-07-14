@@ -10,6 +10,7 @@ export default StyleSheet.create({
   input: {
     height: '10%',
     textAlign: 'center',
+    width: '40%',
   },
   errorMsg: {
     color: 'red',

@@ -9,6 +9,7 @@ export default {
         id: 'sideMenu',
       },
     ],
+    animationType: 'none',
   },
   addchat: {
     screen: 'finka.NewChat',
@@ -20,6 +21,7 @@ export default {
         id: 'sideMenu',
       },
     ],
+    animationType: 'none',
   },
   settings: {
     screen: 'finka.Settings',
@@ -31,5 +33,6 @@ export default {
         id: 'sideMenu',
       },
     ],
+    animationType: 'none',
   },
 }
