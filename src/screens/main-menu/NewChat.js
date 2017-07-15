@@ -45,6 +45,7 @@ class NewChat extends React.Component {
         <TextInput
           placeholder='Номер телефона'
           style={commonStyle.input}
+          keyboardType='numeric'
           onChangeText={text => this.setState({ phone: text })}
           value={this.state.phone}
         />

@@ -19,7 +19,7 @@ class Pin extends React.Component {
     super(props)
     this.onSubmit = this.onSubmit.bind(this)
     this.state = {
-      pin: this.props.currentUser.pin,
+      pin: '',
     }
   }
 
